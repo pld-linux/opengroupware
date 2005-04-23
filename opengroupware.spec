@@ -1,72 +1,57 @@
-%define		__source	.
+# TODO: spec filename vs Name
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
 %define		xmlrpcd_ver	1.0a
 %define		ogo_libogopalmui
 %define		ogo_libogopalm
 
-Summary:	OpenGroupware.
+Summary:	OpenGroupware
+Summary(pl):	OpenGroupware
 Name:		ogo
 Version:	1.0a
 Release:	0
-Vendor:		http://www.opengroupware.org
 License:	GPL
-URL:		http://www.opengroupware.org
-Group:		Development/Libraries
-AutoReqProv:	off
+Group:		Libraries
 Source0:	http://download.opengroupware.org/sources/trunk/opengroupware.org-trunk-latest.tar.gz
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildPreReq:	gnustep-make
-
-Requires:	pilot-link
-Requires:	apache
-Requires:	glibc-obj
-Requires:	glibc
-Requires:	openssl >= 0.9.7
-Requires:	openldap
-Requires:	postgresql
-
-
-BuildRequires:	pilot-link-devel
+URL:		http://www.opengroupware.org/
+#AutoReqProv:	off
+BuildRequires:	apache-devel >= 2.0.40
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	apache-devel >= 2.0.40
-BuildRequires:	glibc-obj
 BuildRequires:	glibc-devel
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	gnustep-make-devel
+BuildRequires:  opengroupware.org-pilot-link-devel
 BuildRequires:	openldap-devel
+BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	pilot-link-devel
 BuildRequires:	postgresql-devel
+#Requires:	pilot-link
+Requires:	apache
+#Requires:	glibc
+Requires:	openssl >= 0.9.7
+#Requires:	openldap
+# local???
+Requires:	postgresql
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
-# USE="-xml2 -truetype -gtk -kde -cups -X -perl -python" emerge -vp postgresql openldap
 #echo "LDPATH=/usr/lib/opengroupware.org/Libraries/ix86/linux-gnu/gnu-fd-nil/" >> /etc/env.d/50ogo
 
 %description
 OGo.
 
+%description -l pl
+OGo.
 
-%package dbsetup
-Summary:	docapi
-Group:		Development/Libraries
-#Requires:	gnustep-make
-AutoReqProv:	off
-
-%description dbsetup
-database setup.
 %package docapi
 Summary:	docapi
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description docapi
 docapi package.
 
 %package docapi-fs-project
 Summary:	docapi fs project
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description docapi-fs-project
 docapi filesystem project package.
@@ -74,17 +59,14 @@ docapi filesystem project package.
 %package docapi-fs-project-devel
 Summary:	docapi fs project devel
 Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Requires:	%{name}-docapi-fs-project = %{version}-%{release}
 
 %description docapi-fs-project-devel
 docapi filesystem project devel package.
 
 %package docapi-db-project
 Summary:	docapi db project
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description docapi-db-project
 docapi database project package.
@@ -92,322 +74,280 @@ docapi database project package.
 %package docapi-db-project-devel
 Summary:	docapi db project devel
 Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Requires:	%{name}-docapi-db-project = %{version}-%{release}
 
 %description docapi-db-project-devel
 docapi database project devel package.
 
 %package docapi-devel
 Summary:	docapi-devel
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
+Requires:	%{name}-docapi = %{version}-%{release}
 
 %description docapi-devel
 docapi devel package.
+
 %package logic
 Summary:	logic
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description logic
-logic package. ##
+logic package.
+
 %package logic-tools
 Summary:	logic-tools
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description logic-tools
-logic tools package. ##
+logic tools package.
+
 %package logic-devel
 Summary:	logic-devel
 Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Requires:	%{name}-logic = %{version}-%{release}
 
 %description logic-devel
 logic devel package.
 
-%package	pda
+%package pda
 Summary:	pda
-Group:		Development/Libraries
-Requires:  gnustep-make
-Requires:  opengroupware.org-pilot-link
-Requires:  pilot-link
-BuildRequires:  pilot-link-devel
-BuildRequires:  opengroupware.org-pilot-link-devel
-AutoReqProv:	off
+Group:		Libraries
+Requires:	opengroupware.org-pilot-link
+#Requires:	pilot-link
 
 %description pda
 pda package.
 
-%package 	pda-devel
+%package pda-devel
 Summary:	pda devel
 Group:		Development/Libraries
-Requires:  gnustep-make
-BuildRequires:  pilot-link-devel
-BuildRequires:  opengroupware.org-pilot-link-devel
-AutoReqProv:	off
+Requires:	%{name}-pda = %{version}-%{release}
 
 %description pda-devel
 pda devel package.
 
 %package theme-default
 Summary:	theme default
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description theme-default
-theme default package. ##
+theme default package.
+
 %package theme-ooo
 Summary:	theme ooo
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description theme-ooo
-theme ooo package. ##
+theme ooo package.
+
 %package theme-blue
 Summary:	theme blue
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description theme-blue
-theme blue package. ##
+theme blue package.
+
 %package theme-kde
 Summary:	theme kde
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description theme-kde
-theme kde package. ##
+theme kde package.
+
 %package theme-orange
 Summary:	theme orange
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description theme-orange
 theme orange package.
+
 %package tools
 Summary:	tools
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description tools
 tools package.
+
 %package webui-app
 Summary:	webui app
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-app
-webui app package. #
+webui app package.
+
 %package webui-core
 Summary:	webui core
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-core
-webui core package. ##
+webui core package.
+
 %package webui-core-devel
 Summary:	webui core devel
 Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Requires:	%{name}-webui-core = %{version}-%{release}
 
 %description webui-core-devel
-webui core devel package. ##
+webui core devel package.
+
 %package webui-calendar
 Summary:	webui calendar
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-calendar
-webui calendar package. ##
+webui calendar package.
+
 %package webui-contact
 Summary:	webui contact
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-contact
-webui contact package. ##
+webui contact package.
+
 %package webui-mailer
 Summary:	webui mailer
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-mailer
-webui mailer package. ##
+webui mailer package.
+
 %package webui-mailer-devel
 Summary:	webui mailer devel
 Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Requires:	%{name}-webui-mailer = %{version}-%{release}
 
 %description webui-mailer-devel
-webui mailer devel package. ##
+webui mailer devel package.
+
 %package webui-news
 Summary:	webui news
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-news
-webui news package. ##
+webui news package.
+
 %package webui-task
 Summary:	webui task
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-task
-webui task package. ##
+webui task package.
+
 %package webui-project
 Summary:	webui project
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-project
-webui project package. ##
+webui project package.
+
 %package webui-resource-dk
 Summary:	webui resource dk
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-dk
-webui resource dk package. ##
+webui resource dk package.
+
 %package webui-resource-nl
 Summary:	webui resource nl
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-nl
-webui resource nl package. ##
+webui resource nl package.
+
 %package webui-resource-en
 Summary:	webui resource en
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-en
-webui resource en package. ##
+webui resource en package.
+
 %package webui-resource-fr
 Summary:	webui resource fr
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-fr
-webui resource fr package. ##
+webui resource fr package.
+
 %package webui-resource-de
 Summary:	webui resource de
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-de
-webui resource de package. ##
+webui resource de package.
+
 %package webui-resource-hu
 Summary:	webui resource hu
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-hu
-webui resource hu package. ##
+webui resource hu package.
+
 %package webui-resource-it
 Summary:	webui resource it
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-it
-webui resource it package. ##
+webui resource it package.
+
 %package webui-resource-jp
 Summary:	webui resource jp
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-jp
-webui resource jp package. ##
-%package webui-resource-no
-Summary:	webui resource no
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+webui resource jp package.
 
-%description webui-resource-no
-webui resource no package. ##
+%package webui-resource-nb
+Summary:	webui resource nb
+Group:		Libraries
+
+%description webui-resource-nb
+webui resource nb package.
+
 %package webui-resource-pl
 Summary:	webui resource pl
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-pl
-webui resource pl package. ##
+webui resource pl package.
+
 %package webui-resource-pt
 Summary:	webui resource pt
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-pt
-webui resource pt package. ##
+webui resource pt package.
+
 %package webui-resource-es
 Summary:	webui resource es
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-es
-webui resource es package. ##
+webui resource es package.
+
 %package webui-resource-se
 Summary:	webui resource se
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-se
-webui resource se package. ##
+webui resource se package.
+
 %package webui-resource-ptbr
 Summary:	webui resource ptbr
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description webui-resource-ptbr
 webui resource ptbr package.
+
 %package xmlrpcd
 Summary:	xmlrpcd
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description xmlrpcd
 xmlrpcd package.
+
 %package zidestore
 Summary:	zidestore
-Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Group:		Libraries
 
 %description zidestore
 zidestore package.
@@ -415,56 +355,42 @@ zidestore package.
 %package zidestore-devel
 Summary:	zidestore devel
 Group:		Development/Libraries
-#Requires:  gnustep-make
-AutoReqProv:	off
+Requires:	%{name}-zidestore = %{version}-%{release}
 
 %description zidestore-devel
 zidestore devel package.
 
-
 %prep
-
 %setup -q -n opengroupware.org
 
-
 %build
-%{__source} %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
+. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
 %{__make} %{ogo_makeflags}
-
-
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__source} %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
-install -d GNUSTEP_INSTALLATION_DIR=${RPM_BUILD_ROOT}%{_libdir}/GNUstep
+install -d $RPM_BUILD_ROOT%{_libdir}/GNUstep
 
-%{__make} %{ogo_makeflags} GNUSTEP_INSTALLATION_DIR=${RPM_BUILD_ROOT}%{_libdir}/GNUstep \
-                      FHS_INSTALL_ROOT=${RPM_BUILD_ROOT}%{_prefix} \
-                      BUNDLE_INSTALL_DIR=${RPM_BUILD_ROOT}%{_prefix} \
-                      WOBUNDLE_INSTALL_DIR=${RPM_BUILD_ROOT}%{_prefix} \
-                     install
+. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
 
-cp -Rp WebUI/Templates "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/templates"
-cp -Rp WebUI/Resources "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/translations"
-cp -Rp Themes/WebServerResources "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/www"
-rm -fr "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/templates/HelpUI"
-rm -fr "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/translations/COPYRIGHT"
-rm -fr "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/translations/ChangeLog"
-rm -fr "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/translations/GNUmakefile"
-rm -fr "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/www/GNUmakefile"
-rm -fr "${RPM_BUILD_ROOT}%{_datadir}/opengroupware.org-%{version}/www/tools"
+%{__make} %{ogo_makeflags} install \
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep \
+	FHS_INSTALL_ROOT=$RPM_BUILD_ROOT%{_prefix} \
+	BUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix} \
+	WOBUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix}
 
-
-%post
-
-
-%postun
-
+cp -Rp WebUI/Templates "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates"
+cp -Rp WebUI/Resources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations"
+cp -Rp Themes/WebServerResources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www"
+rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates/HelpUI"
+rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/COPYRIGHT"
+rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/ChangeLog"
+rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/GNUmakefile"
+rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/GNUmakefile"
+rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/tools"
 
 %clean
-
-rm -fr ${RPM_BUILD_ROOT}
-
+rm -rf $RPM_BUILD_ROOT
 
 %files docapi
 %defattr(644,root,root,755)
