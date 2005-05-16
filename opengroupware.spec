@@ -2,19 +2,18 @@
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
 %define		xmlrpcd_ver	1.0a
-%define		ogo_libogopalmui
-%define		ogo_libogopalm
+%define		datatrunk	200505120002
 
 Summary:	OpenGroupware
 Summary(pl):	OpenGroupware
-Name:		ogo
-Version:	1.0a
-Release:	0
+Name:		opengroupware.org
+Version:	r995 
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://download.opengroupware.org/sources/trunk/opengroupware.org-trunk-latest.tar.gz
+Source0:	http://download.opengroupware.org/sources/trunk/%{name}-trunk-%{version}-%{datatrunk}.tar.gz
+# Source0-md5:	a8b322de9b040ac9c0e671d19b4d3975
 URL:		http://www.opengroupware.org/
-#AutoReqProv:	off
 BuildRequires:	apache-devel >= 2.0.40
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -698,9 +697,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_datadir}/opengroupware.org-%{version}/translations/Japanese.lproj
 
-%files webui-resource-no
-%defattr(644,root,root,755)
-%{_datadir}/opengroupware.org-%{version}/translations/Norwegian.lproj
+#%files webui-resource-no
+#%defattr(644,root,root,755)
+#%{_datadir}/opengroupware.org-%{version}/translations/Norwegian.lproj
 
 %files webui-resource-pl
 %defattr(644,root,root,755)
