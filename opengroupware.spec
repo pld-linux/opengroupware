@@ -19,11 +19,13 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glibc-devel
 BuildRequires:	gnustep-make-devel
-BuildRequires:  opengroupware.org-pilot-link-devel
+#BuildRequires:  opengroupware.org-pilot-link-devel
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	pilot-link-devel
 BuildRequires:	postgresql-devel
+BuildRequires:	openldap-devel
+BuildRequires:	gnustep-extensions-devel
 #Requires:	pilot-link
 Requires:	apache
 #Requires:	glibc
@@ -363,7 +365,9 @@ zidestore devel package.
 %setup -q -n opengroupware.org
 
 %build
+
 . %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
+%configure
 %{__make} %{ogo_makeflags}
 
 %install
@@ -373,7 +377,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/GNUstep
 . %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
 
 %{__make} %{ogo_makeflags} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep \
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep/System \
 	FHS_INSTALL_ROOT=$RPM_BUILD_ROOT%{_prefix} \
 	BUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix} \
 	WOBUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix}
