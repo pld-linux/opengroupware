@@ -2,29 +2,37 @@
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
 %define		xmlrpcd_ver	1.0a
-%define		datatrunk	200505120002
+%define		datatrunk	200509011104
 
 Summary:	OpenGroupware
 Summary(pl):	OpenGroupware
 Name:		opengroupware.org
-Version:	r995 
+Version:	r1259 
 Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://download.opengroupware.org/sources/trunk/%{name}-trunk-%{version}-%{datatrunk}.tar.gz
-# Source0-md5:	a8b322de9b040ac9c0e671d19b4d3975
+Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{version}-%{datatrunk}.tar.gz
+# Source0-md5:	c141909fa83d0779f8e7931fbcb6bd3b
 URL:		http://www.opengroupware.org/
 BuildRequires:	apache-devel >= 2.0.40
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glibc-devel
 BuildRequires:	gnustep-make-devel
-#BuildRequires:  opengroupware.org-pilot-link-devel
+BuildRequires:  opengroupware.org-pilot-link-devel
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	pilot-link-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	openldap-devel
+BuildRequires:	sope-appserver-devel
+BuildRequires:	sope-core-devel
+BuildRequires:	sope-EOF-devel
+BuildRequires:	sope-gdl1-devel
+BuildRequires:	sope-ical-devel
+BuildRequires:	sope-ldap-devel
+BuildRequires:	sope-mime-devel
+BuildRequires:	sope-xml-devel
 BuildRequires:	gnustep-extensions-devel
 #Requires:	pilot-link
 Requires:	apache
@@ -365,12 +373,15 @@ zidestore devel package.
 %setup -q -n opengroupware.org
 
 %build
-
+set -x
 . %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
-%configure
+
+./configure --with-gnustep --gsmake=%{_libdir}/GNUstep/System/Library/Makefiles
+
 %{__make} %{ogo_makeflags}
 
 %install
+set -x
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/GNUstep
 
