@@ -1,4 +1,7 @@
 # TODO: spec filename vs Name
+# - make it build oustide GNUstep directory : /usr/lib/
+# - choose ./configure vs . include
+# - make %files according of choice
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
 %define		xmlrpcd_ver	1.0a
@@ -18,11 +21,11 @@ BuildRequires:	apache-devel >= 2.0.40
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glibc-devel
-BuildRequires:	gnustep-make-devel
-BuildRequires:  opengroupware.org-pilot-link-devel
+BuildRequires:	gnustep-make-libFoundation-devel
+#BuildRequires:  opengroupware.org-pilot-link-devel
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel >= 0.9.7
-BuildRequires:	pilot-link-devel
+#BuildRequires:	pilot-link-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	openldap-devel
 BuildRequires:	sope-appserver-devel
@@ -374,10 +377,8 @@ zidestore devel package.
 
 %build
 set -x
-. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
-
-./configure --with-gnustep --gsmake=%{_libdir}/GNUstep/System/Library/Makefiles
-
+. %{_libdir}/GNUstep-libFoundation/System/Library/Makefiles/GNUstep.sh
+./configure
 %{__make} %{ogo_makeflags}
 
 %install
@@ -385,23 +386,23 @@ set -x
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/GNUstep
 
-. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
+. %{_libdir}/GNUstep-libFoundation/System/Library/Makefiles/GNUstep.sh
 
 %{__make} %{ogo_makeflags} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep/System \
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep-libFoundation/System \
 	FHS_INSTALL_ROOT=$RPM_BUILD_ROOT%{_prefix} \
 	BUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix} \
 	WOBUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix}
 
-cp -Rp WebUI/Templates "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates"
-cp -Rp WebUI/Resources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations"
-cp -Rp Themes/WebServerResources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www"
-rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates/HelpUI"
-rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/COPYRIGHT"
-rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/ChangeLog"
-rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/GNUmakefile"
-rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/GNUmakefile"
-rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/tools"
+#cp -Rp WebUI/Templates "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates"
+#cp -Rp WebUI/Resources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations"
+#cp -Rp Themes/WebServerResources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www"
+#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates/HelpUI"
+#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/COPYRIGHT"
+#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/ChangeLog"
+#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/GNUmakefile"
+#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/GNUmakefile"
+#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/tools"
 
 %clean
 rm -rf $RPM_BUILD_ROOT
