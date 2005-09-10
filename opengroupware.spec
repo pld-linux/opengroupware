@@ -1,20 +1,29 @@
 # TODO: spec filename vs Name
 # - make it build oustide GNUstep directory : /usr/lib/
-# - choose ./configure vs . include
-# - make %files according of choice
+# - make proper ./configure build
+# - check %files section
+# - translate all packages to pl
+# - scavange as much as possible from the included spec in maitance
+# - make proper rc-init scripts
+# - scavange and adjust configure files check scripts
+# - check spellings and typos
+# - tweak BR and R to fit PLD
+%define		nightlybuild	r1259
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
 %define		xmlrpcd_ver	1.0a
 %define		datatrunk	200509011104
+%define		libogo_v	5.3
+%define zide_v 1.5
 
 Summary:	OpenGroupware
 Summary(pl):	OpenGroupware
 Name:		opengroupware.org
-Version:	r1259 
-Release:	1
+Version:	1.1
+Release:	0.1
 License:	GPL
 Group:		Libraries
-Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{version}-%{datatrunk}.tar.gz
+Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{nightlybuild}-%{datatrunk}.tar.gz
 # Source0-md5:	c141909fa83d0779f8e7931fbcb6bd3b
 URL:		http://www.opengroupware.org/
 BuildRequires:	apache-devel >= 2.0.40
@@ -229,126 +238,175 @@ Group:		Development/Libraries
 Requires:	%{name}-webui-mailer = %{version}-%{release}
 
 %description webui-mailer-devel
-webui mailer devel package.
+This package contains the development files for the mailer component
+of OpenGroupware.org's Web UI
 
 %package webui-news
-Summary:	webui news
-Group:		Libraries
+Summary:      News component of OpenGroupware.org's Web UI
+Group:        Development/Libraries
+#Requires:     sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
+AutoReqProv:  off
 
 %description webui-news
-webui news package.
+The news component shows recent appointments and tasks for each user.
+Additionally it supports the creation and display of simple news items.
 
 %package webui-task
-Summary:	webui task
-Group:		Libraries
+Summary:      Task component of OpenGroupware.org's Web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app ogo-webui-core
+AutoReqProv:  off
 
 %description webui-task
-webui task package.
+The task component enables users to assign and manage tasks
+related to projects or standalone.
 
 %package webui-project
-Summary:	webui project
-Group:		Libraries
+Summary:      Project component of OpenGroupware.org's Web UI
+Group:        Development/Libraries
+Requires:     sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
+AutoReqProv:  off
 
 %description webui-project
-webui project package.
+The project component adds project management capabilities to
+OpenGroupware.org's web UI. It allows to assign and track a
+project's status, add documents and links and interworks nicely
+with the task component to assign specific tasks within a project.
 
+%package webui-resource-basque
+Summary:      Basque translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
+
+%description webui-resource-basque
+This package contains the Basque translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-dk
-Summary:	webui resource dk
-Group:		Libraries
+Summary:      Danish translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-dk
-webui resource dk package.
-
+This package contains the Danish translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-nl
-Summary:	webui resource nl
-Group:		Libraries
+Summary:      Dutch translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-nl
-webui resource nl package.
-
+This package contains the Dutch translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-en
-Summary:	webui resource en
-Group:		Libraries
+Summary:      English translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-en
-webui resource en package.
-
+This package contains the English translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-fr
-Summary:	webui resource fr
-Group:		Libraries
+Summary:      French translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-fr
-webui resource fr package.
-
+This package contains the French translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-de
-Summary:	webui resource de
-Group:		Libraries
+Summary:      German translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-de
-webui resource de package.
-
+This package contains the German translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-hu
-Summary:	webui resource hu
-Group:		Libraries
+Summary:      Hungarian translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-hu
-webui resource hu package.
-
+This package contains the Hungarian translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-it
-Summary:	webui resource it
-Group:		Libraries
+Summary:      Italian translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-it
-webui resource it package.
-
+This package contains the Italian translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-jp
-Summary:	webui resource jp
-Group:		Libraries
+Summary:      Japanese translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-jp
-webui resource jp package.
+This package contains the Japanese translation for OpenGroupware.org's web UI.
+##
+%package webui-resource-no
+Summary:      Norwegian translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
-%package webui-resource-nb
-Summary:	webui resource nb
-Group:		Libraries
-
-%description webui-resource-nb
-webui resource nb package.
-
+%description webui-resource-no
+This package contains the Norwegian translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-pl
-Summary:	webui resource pl
-Group:		Libraries
+Summary:      Polish translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-pl
-webui resource pl package.
-
+This package contains the Polish translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-pt
-Summary:	webui resource pt
-Group:		Libraries
+Summary:      Portuguese translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-pt
-webui resource pt package.
-
+This package contains the Portuguese translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-es
-Summary:	webui resource es
-Group:		Libraries
+Summary:      Spanish translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-es
-webui resource es package.
+This package contains the Spanish translation for OpenGroupware.org's web UI.
+##
+%package webui-resource-sk
+Summary:      Slovak translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
-%package webui-resource-se
-Summary:	webui resource se
-Group:		Libraries
-
-%description webui-resource-se
-webui resource se package.
-
+%description webui-resource-sk
+This package contains the Slovak translation for OpenGroupware.org's web UI.
+##
 %package webui-resource-ptbr
-Summary:	webui resource ptbr
-Group:		Libraries
+Summary:      Portuguese (Brazilian) translation for OpenGroupware.org's web UI
+Group:        Development/Libraries
+Requires:     ogo-webui-app
+AutoReqProv:  off
 
 %description webui-resource-ptbr
-webui resource ptbr package.
+This package contains the Portuguese (Brazilian) translation for OpenGroupware.org's web UI.
 
 %package xmlrpcd
 Summary:	xmlrpcd
@@ -394,21 +452,54 @@ install -d $RPM_BUILD_ROOT%{_libdir}/GNUstep
 	BUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix} \
 	WOBUNDLE_INSTALL_DIR=$RPM_BUILD_ROOT%{_prefix}
 
-#cp -Rp WebUI/Templates "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates"
-#cp -Rp WebUI/Resources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations"
-#cp -Rp Themes/WebServerResources "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www"
-#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/templates/HelpUI"
-#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/COPYRIGHT"
-#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/ChangeLog"
-#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/translations/GNUmakefile"
-#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/GNUmakefile"
-#rm -fr "$RPM_BUILD_ROOT%{_datadir}/opengroupware.org-%{version}/www/tools"
+SHAREDIR="${RPM_BUILD_ROOT}%{_prefix}/share/opengroupware.org-%{version}"
+rm -f "${SHAREDIR}/templates"
+rm -f "${SHAREDIR}/translations"
+rm -f "${SHAREDIR}/www"
+cp -Rp WebUI/Templates "${SHAREDIR}/templates"
+cp -Rp WebUI/Resources "${SHAREDIR}/translations"
+cp -Rp Themes/WebServerResources "${SHAREDIR}/www"
+rm -fr "${SHAREDIR}/templates/ChangeLog"
+rm -fr "${SHAREDIR}/templates/GNUmakefile"
+rm -fr "${SHAREDIR}/templates/HelpUI"
+rm -fr "${SHAREDIR}/translations/COPYRIGHT"
+rm -fr "${SHAREDIR}/translations/ChangeLog"
+rm -fr "${SHAREDIR}/translations/GNUmakefile"
+rm -fr "${SHAREDIR}/www/GNUmakefile"
+rm -fr "${SHAREDIR}/www/tools"
+
+##prepare initscript templates
+#INITSCRIPTS_TMP_DIR_OGO="${SHAREDIR}/initscript_templates"
+#INITSCRIPTS_TMP_DIR_ZIDE="${RPM_BUILD_ROOT}%{_prefix}/share/zidestore-%{zide_v}/initscript_templates"
+#mkdir -p ${INITSCRIPTS_TMP_DIR_OGO}
+#mkdir -p ${INITSCRIPTS_TMP_DIR_ZIDE}
+#cp %{_specdir}/initscript_templates/redhat_nhsd ${INITSCRIPTS_TMP_DIR_OGO}/
+#cp %{_specdir}/initscript_templates/redhat_xmlrpcd ${INITSCRIPTS_TMP_DIR_OGO}/
+#cp %{_specdir}/initscript_templates/redhat_opengroupware ${INITSCRIPTS_TMP_DIR_OGO}/
+#cp %{_specdir}/initscript_templates/redhat_zidestore ${INITSCRIPTS_TMP_DIR_ZIDE}/
+#cp %{_specdir}/initscript_templates/suse_nhsd ${INITSCRIPTS_TMP_DIR_OGO}/
+#cp %{_specdir}/initscript_templates/suse_xmlrpcd ${INITSCRIPTS_TMP_DIR_OGO}/
+#cp %{_specdir}/initscript_templates/suse_opengroupware ${INITSCRIPTS_TMP_DIR_OGO}/
+#cp %{_specdir}/initscript_templates/suse_zidestore ${INITSCRIPTS_TMP_DIR_ZIDE}/
+
+#ghost initscripts
+#INITSCRIPT_DST="${RPM_BUILD_ROOT}%{_sysconfdir}/init.d"
+#mkdir -p ${INITSCRIPT_DST}
+#touch ${INITSCRIPT_DST}/ogo-nhsd
+#touch ${INITSCRIPT_DST}/ogo-webui
+#touch ${INITSCRIPT_DST}/ogo-xmlrpcd
+#touch ${INITSCRIPT_DST}/ogo-zidestore
+
+##template for ogo-aptnotify
+#APTNOTIFY_TMP_DIR="${SHAREDIR}/aptnotify_template"
+#mkdir -p ${APTNOTIFY_TMP_DIR}
+#cp %{_specdir}/aptnotify_template/ogo-aptnotify.sh ${APTNOTIFY_TMP_DIR}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files docapi
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoAccounts.ds
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoBase.ds
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoContacts.ds
@@ -416,37 +507,37 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoProject.ds
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoRawDatabase.ds
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoScheduler.ds
-%{_libdir}/libOGoAccounts*.so.5.1*
-%{_libdir}/libOGoBase*.so.5.1*
-%{_libdir}/libOGoContacts*.so.5.1*
-%{_libdir}/libOGoDocuments*.so.5.1*
-%{_libdir}/libOGoJobs*.so.5.1*
-%{_libdir}/libOGoProject*.so.5.1*
-%{_libdir}/libOGoRawDatabase*.so.5.1*
-%{_libdir}/libOGoScheduler*.so.5.1*
+%{_libdir}/libOGoAccounts*.so.%{libogo_v}*
+%{_libdir}/libOGoBase*.so.%{libogo_v}*
+%{_libdir}/libOGoContacts*.so.%{libogo_v}*
+%{_libdir}/libOGoDocuments*.so.%{libogo_v}*
+%{_libdir}/libOGoJobs*.so.%{libogo_v}*
+%{_libdir}/libOGoProject*.so.%{libogo_v}*
+%{_libdir}/libOGoRawDatabase*.so.%{libogo_v}*
+%{_libdir}/libOGoScheduler*.so.%{libogo_v}*
 
 %files docapi-fs-project
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoFileSystemProject.ds
-%{_libdir}/libOGoFileSystemProject*.so.5.1*
+%{_libdir}/libOGoFileSystemProject*.so.%{libogo_v}*
 
 %files docapi-fs-project-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/OGoFileSystemProject
 %{_libdir}/libOGoFileSystemProject*.so
 
 %files docapi-db-project
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/datasources/OGoDatabaseProject.ds
-%{_libdir}/libOGoDatabaseProject*.so.5.1*
+%{_libdir}/libOGoDatabaseProject*.so.%{libogo_v}*
 
 %files docapi-db-project-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/OGoDatabaseProject
 %{_libdir}/libOGoDatabaseProject*.so
 
 %files docapi-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/OGoAccounts
 %{_includedir}/OGoBase
 %{_includedir}/OGoContacts
@@ -465,7 +556,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libOGoScheduler*.so
 
 %files logic
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/commands/LSAccount.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSAddress.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSBase.cmd
@@ -475,23 +566,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/opengroupware.org-%{version}/commands/LSNews.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSPerson.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSProject.cmd
-%{_libdir}/opengroupware.org-%{version}/commands/LSResource.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSScheduler.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSSearch.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSTasks.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/LSTeam.cmd
 %{_libdir}/opengroupware.org-%{version}/commands/OGo.model
-%{_libdir}/libLSAddress*.so.5.1*
-%{_libdir}/libLSFoundation*.so.5.1*
-%{_libdir}/libLSSearch*.so.5.1*
-%{_libdir}/libOGoSchedulerTools*.so.5.1*
+%{_libdir}/libLSAddress*.so.%{libogo_v}*
+%{_libdir}/libLSFoundation*.so.%{libogo_v}*
+%{_libdir}/libLSSearch*.so.%{libogo_v}*
+%{_libdir}/libOGoSchedulerTools*.so.%{libogo_v}*
 
 %files logic-tools
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/load-LSModel
+%defattr(-,root,root,-)
+%{_bindir}/load-LSModel
 
 %files logic-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/LSFoundation
 %{_includedir}/OGoSchedulerTools
 %{_libdir}/libLSAddress*.so
@@ -499,37 +589,40 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libLSSearch*.so
 %{_libdir}/libOGoSchedulerTools*.so
 
-%files pda
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/ogo-nhsd-%{version}
-%attr(755,root,root) %{_bindir}/ogo-ppls-%{version}
-%{_libdir}/libOGoNHS*.so.5.1*
-%{_libdir}/%{ogo_libogopalmui}.so.5.1*
-%{_libdir}/%{ogo_libogopalm}.so.5.1*
-%{_libdir}/libPPSync*.so.5.1*
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/OpenGroupwareNHS
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/Resources/Info-gnustep.plist
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/bundle-info.plist
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/stamp.make
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/OGoPalmDS
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/Resources/Info-gnustep.plist
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/bundle-info.plist
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/stamp.make
-%{_libdir}/opengroupware.org-%{version}/webui/OGoPalm.lso
+#%files pda
+#%defattr(-,root,root,-)
+#%{_sbindir}/ogo-nhsd-%{version}
+#%{_bindir}/ogo-ppls-%{version}
+#%{_libdir}/libOGoNHS*.so.%{libogo_v}*
+#%{_libdir}/%{ogo_libogopalmui}.so.%{libogo_v}*
+#%{_libdir}/%{ogo_libogopalm}.so.%{libogo_v}*
+#%{_libdir}/libPPSync*.so.%{libogo_v}*
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/OpenGroupwareNHS
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/Resources/Info-gnustep.plist
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/bundle-info.plist
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/stamp.make
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/OGoPalmDS
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/Resources/Info-gnustep.plist
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/bundle-info.plist
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/stamp.make
+#%{_libdir}/opengroupware.org-%{version}/webui/OGoPalm.lso
+#%{_datadir}/opengroupware.org-%{version}//*nhsd
+#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/ogo-nhsd
+#%ghost %attr(0755,root,root) %config %{_sysconfdir}/init.d/ogo-nhsd
 
-%files pda-devel
-%defattr(644,root,root,755)
-%{_includedir}/OGoNHS
-%{_includedir}/OGoPalm
-%{_includedir}/OGoPalmUI
-%{_includedir}/PPSync
-%{_libdir}/libOGoNHS*.so
-%{_libdir}/%{ogo_libogopalmui}.so
-%{_libdir}/%{ogo_libogopalm}.so
-%{_libdir}/libPPSync*.so
+#%files pda-devel
+#%defattr(-,root,root,-)
+#%{_includedir}/OGoNHS
+#%{_includedir}/OGoPalm
+#%{_includedir}/OGoPalmUI
+#%{_includedir}/PPSync
+#%{_libdir}/libOGoNHS*.so
+#%{_libdir}/%{ogo_libogopalmui}.so
+#%{_libdir}/%{ogo_libogopalm}.so
+#%{_libdir}/libPPSync*.so
 
 %files theme-default
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/www/Danish.lproj
 %{_datadir}/opengroupware.org-%{version}/www/English.lproj
 %{_datadir}/opengroupware.org-%{version}/www/German.lproj
@@ -540,61 +633,68 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/www/menu.js
 
 %files theme-ooo
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/templates/Themes/OOo
 %{_datadir}/opengroupware.org-%{version}/www/English_OOo.lproj
 %{_datadir}/opengroupware.org-%{version}/www/German_OOo.lproj
 
 %files theme-blue
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/templates/Themes/blue
 %{_datadir}/opengroupware.org-%{version}/www/English_blue.lproj
 %{_datadir}/opengroupware.org-%{version}/www/German_blue.lproj
 
 %files theme-kde
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/templates/Themes/kde
 %{_datadir}/opengroupware.org-%{version}/www/English_kde.lproj
 
 %files theme-orange
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/templates/Themes/orange
 %{_datadir}/opengroupware.org-%{version}/www/English_orange.lproj
 %{_datadir}/opengroupware.org-%{version}/www/German_orange.lproj
 
 %files tools
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/sky_add_account
-%attr(755,root,root) %{_bindir}/sky_del_account
-%attr(755,root,root) %{_bindir}/sky_get_login_names
-%attr(755,root,root) %{_bindir}/sky_install_procmail
-%attr(755,root,root) %{_bindir}/sky_install_sieve
-%attr(755,root,root) %{_bindir}/sky_send_bulk_messages
-%attr(755,root,root) %{_bindir}/skyaptnotify
-%attr(755,root,root) %{_bindir}/skycheckperm
-%attr(755,root,root) %{_bindir}/skydefaults
-%attr(755,root,root) %{_bindir}/skyjobs2ical
-%attr(755,root,root) %{_bindir}/skylistacls
-%attr(755,root,root) %{_bindir}/skylistprojects
-%attr(755,root,root) %{_bindir}/skyprojectexporter
-%attr(755,root,root) %{_bindir}/skyprojectimporter
-%attr(755,root,root) %{_bindir}/skyruncmd
+%defattr(-,root,root,-)
+%{_bindir}/ogo-account-add
+%{_bindir}/ogo-account-del
+%{_bindir}/ogo-account-list
+%{_bindir}/ogo-acl-list
+%{_bindir}/ogo-check-aptconflicts
+%{_bindir}/ogo-check-permission
+%{_bindir}/ogo-defaults
+%{_bindir}/ogo-instfilter-procmail
+%{_bindir}/ogo-jobs-export
+%{_bindir}/ogo-project-export
+%{_bindir}/ogo-project-import
+%{_bindir}/ogo-project-list
+%{_bindir}/ogo-runcmd
+%{_bindir}/ogo-vcard-get
+%{_bindir}/ogo-vcard-put
+%{_bindir}/sky_install_sieve
+%{_bindir}/sky_send_bulk_messages
+%{_bindir}/skyaptnotify
+#%{_datadir}/opengroupware.org-%{version}/aptnotify_template/ogo-aptnotify.sh
 
 %files webui-app
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/ogo-webui-%{version}
-%{_libdir}/opengroupware.org-%{version}/webui
-%{_datadir}/opengroupware.org-%{version}/templates
+%defattr(-,root,root,-)
+%{_sbindir}/ogo-webui-%{version}
+%{_datadir}/opengroupware.org-%{version}/templates/ogo-webui-%{version}
+#%{_datadir}/opengroupware.org-%{version}/initscript_templates/*opengroupware
+#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/ogo-webui
+#%ghost %attr(0755,root,root) %config %{_sysconfdir}/init.d/ogo-webui
 
 %files webui-core
-%defattr(644,root,root,755)
-%{_libdir}/libOGoFoundation*.so.5.1*
+%defattr(-,root,root,-)
+%{_libdir}/libOGoFoundation*.so.%{libogo_v}*
 %{_libdir}/opengroupware.org-%{version}/webui/AdminUI.lso
 %{_libdir}/opengroupware.org-%{version}/webui/BaseUI.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoUIElements.lso
 %{_libdir}/opengroupware.org-%{version}/webui/PreferencesUI.lso
 %{_libdir}/opengroupware.org-%{version}/webui/PropertiesUI.lso
 %{_libdir}/opengroupware.org-%{version}/webui/RelatedLinksUI.lso
+%{_libdir}/opengroupware.org-%{version}/webui/SoOGo.lso
 %{_datadir}/opengroupware.org-%{version}/templates/AdminUI
 %{_datadir}/opengroupware.org-%{version}/templates/BaseUI
 %{_datadir}/opengroupware.org-%{version}/templates/OGoUIElements
@@ -603,12 +703,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/templates/RelatedLinksUI
 
 %files webui-core-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/OGoFoundation
 %{_libdir}/libOGoFoundation*.so
 
 %files webui-calendar
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/webui/LSWScheduler.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoResourceScheduler.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoScheduler.lso
@@ -623,7 +723,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/Holidays.plist
 
 %files webui-contact
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/webui/AddressUI.lso
 %{_libdir}/opengroupware.org-%{version}/webui/EnterprisesUI.lso
 %{_libdir}/opengroupware.org-%{version}/webui/LDAPAccounts.lso
@@ -634,8 +734,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/templates/PersonsUI
 
 %files webui-mailer
-%defattr(644,root,root,755)
-%{_libdir}/libOGoWebMail*.so.5.1*
+%defattr(-,root,root,-)
+%{_libdir}/libOGoWebMail*.so.%{libogo_v}*
 %{_libdir}/opengroupware.org-%{version}/webui/LSWMail.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoMailEditor.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoMailFilter.lso
@@ -652,22 +752,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/templates/OGoWebMail
 
 %files webui-mailer-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/OGoWebMail
 %{_libdir}/libOGoWebMail*.so
 
 %files webui-news
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/webui/NewsUI.lso
 %{_datadir}/opengroupware.org-%{version}/templates/NewsUI
 
 %files webui-task
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/webui/JobUI.lso
 %{_datadir}/opengroupware.org-%{version}/templates/JobUI
 
 %files webui-project
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_libdir}/opengroupware.org-%{version}/webui/LSWProject.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoDocInlineViewers.lso
 %{_libdir}/opengroupware.org-%{version}/webui/OGoNote.lso
@@ -681,88 +781,89 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/templates/OGoProjectInfo
 %{_datadir}/opengroupware.org-%{version}/templates/OGoProjectZip
 
+%files webui-resource-basque
+%defattr(-,root,root,-)
+%{_datadir}/opengroupware.org-%{version}/translations/Basque.lproj
+
 %files webui-resource-dk
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Danish.lproj
 
 %files webui-resource-nl
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Dutch.lproj
 
 %files webui-resource-en
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/English.lproj
 
 %files webui-resource-fr
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/French.lproj
 
 %files webui-resource-de
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/German.lproj
 
 %files webui-resource-hu
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Hungarian.lproj
 
 %files webui-resource-it
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Italian.lproj
 
 %files webui-resource-jp
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Japanese.lproj
 
-#%files webui-resource-no
-#%defattr(644,root,root,755)
-#%{_datadir}/opengroupware.org-%{version}/translations/Norwegian.lproj
+%files webui-resource-no
+%defattr(-,root,root,-)
+%{_datadir}/opengroupware.org-%{version}/translations/Norwegian.lproj
 
 %files webui-resource-pl
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Polish.lproj
 
 %files webui-resource-pt
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Portuguese.lproj
 
+%files webui-resource-sk
+%defattr(-,root,root,-)
+%{_datadir}/opengroupware.org-%{version}/translations/Slovak.lproj
+
 %files webui-resource-es
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/Spanish.lproj
 
-%files webui-resource-se
-%defattr(644,root,root,755)
-%{_datadir}/opengroupware.org-%{version}/translations/Swedish.lproj
-
 %files webui-resource-ptbr
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_datadir}/opengroupware.org-%{version}/translations/ptBR.lproj
 
 %files xmlrpcd
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/ogo-xmlrpcd-%{xmlrpcd_ver}
+%defattr(-,root,root,-)
+%{_sbindir}/ogo-xmlrpcd-%{version}
+#%{_datadir}/opengroupware.org-%{version}/initscript_templates/*xmlrpcd
+#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/ogo-xmlrpcd
+#%ghost %attr(0755,root,root) %{_sysconfdir}/init.d/ogo-xmlrpcd
 
 %files zidestore
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/ogo-zidestore-%{zid_ver}
-%{_libdir}/libZSAppointments*.so.%{zid_ver}*
-%{_libdir}/libZSBackend*.so.%{zid_ver}*
-%{_libdir}/libZSContacts*.so.%{zid_ver}*
-%{_libdir}/libZSFrontend*.so.%{zid_ver}*
-%{_libdir}/libZSProjects*.so.%{zid_ver}*
-%{_libdir}/libZSTasks*.so.%{zid_ver}*
-%{_libdir}/zidestore-%{zid_ver}/Appointments.zsp
-%{_libdir}/zidestore-%{zid_ver}/Contacts.zsp
-%{_libdir}/zidestore-%{zid_ver}/EvoConnect.zsp
-%{_libdir}/zidestore-%{zid_ver}/PrefsUI.zsp
-%{_libdir}/zidestore-%{zid_ver}/Projects.zsp
-%{_libdir}/zidestore-%{zid_ver}/RSS.zsp
-%{_libdir}/zidestore-%{zid_ver}/Tasks.zsp
-%{_libdir}/zidestore-%{zid_ver}/WCAP.zsp
-%{_libdir}/zidestore-%{zid_ver}/ZSCommon.zsp
-%{_datadir}/zidestore-%{zid_ver}
+%defattr(-,root,root,-)
+%{_sbindir}/ogo-zidestore-%{zide_v}
+%{_libdir}/libZSAppointments*.so.%{zide_v}*
+%{_libdir}/libZSBackend*.so.%{zide_v}*
+%{_libdir}/libZSContacts*.so.%{zide_v}*
+%{_libdir}/libZSFrontend*.so.%{zide_v}*
+%{_libdir}/libZSProjects*.so.%{zide_v}*
+%{_libdir}/libZSTasks*.so.%{zide_v}*
+%{_libdir}/zidestore-%{zide_v}
+%{_datadir}/zidestore-%{zide_v}
+#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/ogo-zidestore
+#%ghost %attr(0755,root,root) %{_sysconfdir}/init.d/ogo-zidestore
 
 %files zidestore-devel
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{_includedir}/ZSBackend
 %{_includedir}/ZSFrontend
 %{_libdir}/libZSAppointments*.so
