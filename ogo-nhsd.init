@@ -1,0 +1,114 @@
+#!/bin/sh
+#
+# ogo-nhsd	ogo-nhsd short service description
+#
+# chkconfig:	345 90 10
+#
+# description:	ogo-nhsd long service description
+#
+# $Id$
+
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Get GNUstep settings
+. GNUSTEP_DIR/System/Makefiles/GNUstep.sh
+
+# Get service config - may override defaults
+[ -f /etc/sysconfig/NHSD_SYSCONF ] && . /etc/sysconfig/NHSD_SYSCONF
+
+# Set defaults
+PROG="NHSD_INIT_VERSION"
+USER="ogo"
+DIR="NHSD_INIT_PREFIX"
+BIN="NHSD_INIT_PREFIX/sbin/NHSD_INIT_VERSION"
+PID_FILE="/var/run/NHSD_INIT_VERSION.pid"
+LOGERR="/var/log/opengroupware/NHSD_INIT_VERSION-err.log"
+LOGOUT="/var/log/opengroupware/NHSD_INIT_VERSION-out.log"
+PLIST="nhsd"
+RUN_COMMAND="export PGCLIENTENCODING=${PGCLIENTENCODING}; exec ${BIN} 2>>${LOGERR} 1>>${LOGOUT}"
+
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		# nls "ERROR: Networking is down. %s can't be run." ogo-nhsd
+		msg_network_down ogo-nhsd
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/ogo-nhsd ]; then
+		# show "Starting %s service" ogo-nhsd
+		msg_starting ogo-nhsd
+		daemon --user ${USER} --fork ${RUN_COMMAND}
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/ogo-nhsd
+	else
+		# show "%s service is already running." ogo-nhsd
+		msg_already_running ogo-nhsd
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/ogo-nhsd ]; then
+		# Stop daemons.
+		# show "Stopping %s service" ogo-nhsd
+		msg_stopping ogo-nhsd
+		killproc ${PROG}
+		rm -f /var/lock/subsys/ogo-nhsd
+	else
+		# show "%s service is not running." ogo-nhsd
+		msg_not_running ogo-nhsd
+	fi
+	;;
+  restart)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  reload)
+	if [ -f /var/lock/subsys/ogo-nhsd ]; then
+		# show "Reload %s service" ogo-nhsd
+		msg_reloading ogo-nhsd
+		killproc ${PROG} -HUP
+		RETVAL=$?
+	else
+		# show "%s service is not running." ogo-nhsd
+		msg_not_running ogo-nhsd >&2
+		RETVAL=7
+	fi
+	;;
+  force-reload)
+	# if program allows reloading without stopping
+	$0 reload
+
+	# or if it doesn't
+	$0 restart
+
+	exit $?
+	;;
+  status)
+	status ogo-nhsd
+	RETVAL=$?
+	;;
+  *)
+	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
+
+# This must be last line !
+# vi:syntax=sh:tw=78:ts=8:sw=4
