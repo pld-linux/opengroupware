@@ -5,11 +5,13 @@
 # - check init scripts
 # - cleanup and rel 1
 # - scavange descriptions of subpackages
-%define		nightlybuild	r1259
+# - change %files section to PLD-like
+# - make a trigger bout further installing (making database, initializing it etc..)
+%define		nightlybuild	r1276
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
 %define		xmlrpcd_ver	1.0a
-%define		datatrunk	200509011104
+%define		datatrunk	200509081703
 %define		libversion	5.3
 %define		zide_v		1.5
 
@@ -17,11 +19,11 @@ Summary:	OpenGroupware
 Summary(pl):	OpenGroupware
 Name:		opengroupware.org
 Version:	1.1
-Release:	0.4
+Release:	0.5
 License:	GPL
 Group:		Libraries
 Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{nightlybuild}-%{datatrunk}.tar.gz
-# Source0-md5:	c141909fa83d0779f8e7931fbcb6bd3b
+# Source0-md5:	828b30946e73081c8e9a415ee81a4c71
 Source1:	ogo-webui.init
 Source2:	ogo-nhsd.init
 Source3:	ogo-xmlrpcd.init
@@ -470,6 +472,7 @@ zidestore devel package.
 
 %build
 . %{_libdir}/GNUstep-libFoundation/System/Library/Makefiles/GNUstep.sh
+LIBARY_COMBO=gnu-fd-nil
 export LIBRARY_COMBO="gnu-fd-nil"
 ./configure \
 	--prefix=${RPM_BUILD_ROOT}%{_prefix} \
@@ -677,7 +680,7 @@ if [ "$1" = "1" ]; then
 		"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init" \
 		>%{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
 	chown root:root %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
-	chmod 755 %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
+	chmod 754 %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
 	chkconfig --add "%{NHSD_INIT_NAME}"
 	/sbin/ldconfig
 fi
@@ -691,7 +694,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
 		chkconfig --add "%{NHSD_INIT_NAME}"
 		/sbin/ldconfig
 	else
@@ -702,7 +705,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{NHSD_INIT_NAME}"
 	fi
 	/sbin/ldconfig
 	if [ -f "%{_sysconfdir}/rc.d/init.d/%{NHSD_INIT_NAME}" ]; then
@@ -719,7 +722,7 @@ if [ "$1" = "1" ]; then
 		"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-webui.init" \
 		>%{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 	chown root:root %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
-	chmod 755 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
+	chmod 754 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 	chkconfig --add "%{OGO_INIT_NAME}"
 	chkconfig "%{OGO_INIT_NAME}" on
 	##
@@ -740,7 +743,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-webui.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 		chkconfig --add "%{OGO_INIT_NAME}"
 		chkconfig "%{OGO_INIT_NAME}" on
 	else
@@ -751,7 +754,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-webui.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 	fi
 	/sbin/ldconfig
 	if [ -f "%{_sysconfdir}/rc.d/init.d/%{OGO_INIT_NAME}" ]; then
@@ -768,7 +771,7 @@ if [ "$1" = "1" ]; then
 		"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-xmlrpcd.init" \
 		>%{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
 	chown root:root %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
-	chmod 755 %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
+	chmod 754 %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
 	chkconfig --add "%{XMLRPCD_INIT_NAME}"
 	/sbin/ldconfig
 fi
@@ -782,7 +785,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-xmlrpcd.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
 		chkconfig --add "%{XMLRPCD_INIT_NAME}"
 		/sbin/ldconfig
 	else
@@ -793,7 +796,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-xmlrpcd.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{XMLRPCD_INIT_NAME}"
 	fi
 	/sbin/ldconfig
 	if [ -f "%{_sysconfdir}/rc.d/init.d/%{XMLRPCD_INIT_NAME}" ]; then
@@ -805,12 +808,12 @@ fi
 if [ "$1" = "1" ]; then
 	%{__sed} "s^ZIDESTORE_INIT_VERSION^%{ZIDESTORE_INIT_VERSION}^g; \
 		s^ZIDESTORE_INIT_PREFIX^%{ZIDESTORE_INIT_PREFIX}^g; \
-		s^ZIDESTORE_SYSCONF^%{ZIDESTORE_SYSCONF}^g; \	
+		s^ZIDESTORE_SYSCONF^%{ZIDESTORE_SYSCONF}^g; \
 		s^GNUSTEP_DIR^%{GNUSTEP_DIR}^g" \
 		"%{_datadir}/zidestore-%{zide_v}/initscript_templates/ogo-zidestore.init" \
 		>%{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
 	chown root:root %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
-	chmod 755 %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
+	chmod 754 %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
 	chkconfig --add "%{ZIDESTORE_INIT_NAME}"
 	/sbin/ldconfig
 fi
@@ -824,7 +827,7 @@ if [ "$1" = "2" ]; then
 			"%{_datadir}/zidestore-%{zide_v}/initscript_templates/ogo-zidestore.init" \
 			>%{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
 		chkconfig --add "%{ZIDESTORE_INIT_NAME}"
 		/sbin/ldconfig
 	else
@@ -835,7 +838,7 @@ if [ "$1" = "2" ]; then
 		"%{_datadir}/zidestore-%{zide_v}/initscript_templates/ogo-zidestore.init" \
 		>%{_sysconfdir}/init.d/"%{ZIDESTORE_INIT_NAME}"
 		chown root:root %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
-		chmod 755 %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
+		chmod 754 %{_sysconfdir}/rc.d/init.d/"%{ZIDESTORE_INIT_NAME}"
 	fi
 	/sbin/ldconfig
 	if [ -f "%{_sysconfdir}/rc.d/init.d/%{ZIDESTORE_INIT_NAME}" ]; then
