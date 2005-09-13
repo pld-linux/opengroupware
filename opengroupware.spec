@@ -43,7 +43,7 @@ BuildRequires:	postgresql-devel
 BuildRequires:	openldap-devel
 BuildRequires:	sope-appserver-devel
 BuildRequires:	sope-core-devel
-BuildRequires:	sope-EOF-devel
+#BuildRequires:	sope-EOF-devel
 BuildRequires:	sope-gdl1-devel
 BuildRequires:	sope-ical-devel
 BuildRequires:	sope-ldap-devel
