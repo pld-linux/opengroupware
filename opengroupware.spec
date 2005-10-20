@@ -50,6 +50,7 @@ BuildRequires:	sope-ldap-devel
 BuildRequires:	sope-mime-devel
 BuildRequires:	sope-xml-devel
 BuildRequires:	gnustep-extensions-devel
+Requires:	glibc >= 6:2.3.5-7.6
 #Requires:	pilot-link
 Requires:	apache
 #Requires:	glibc
@@ -222,6 +223,7 @@ theme orange package.
 %package tools
 Summary:	tools
 Group:		Libraries
+Requires:	glibc >= 6:2.3.5-7.6
 
 %description tools
 tools package.
@@ -564,6 +566,10 @@ echo "PGCLIENTENCODING=\"LATIN1\"           # client encoding to use
 echo "PGCLIENTENCODING=\"LATIN1\"           # client encoding to use
 " >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{ZIDESTORE_SYSCONF}
 
+install -d $RPM_BUILD_ROOT/etc/ld.so.conf.d
+echo '%{_libdir}' > $RPM_BUILD_ROOT/etc/ld.so.conf.d/opengroupware.conf
+echo '%{_libdir}' > $RPM_BUILD_ROOT/etc/ld.so.conf.d/ogo.conf
+
 %pre
 if [ "$1" = "1" ]; then
 	%groupadd -g 157 "%{OGO_GROUP}"
@@ -594,14 +600,8 @@ if [ "$1" = "1" ]; then
 	Defaults write skyaptnotify AptNotifySkyrixPassword '\"\"'
 	Defaults write skyaptnotify AptNotifySkyrixUser root
 	"
-	##
-	if [ -d %{_sysconfdir}/ld.so.conf.d ]; then
-		echo "%{_libdir}" > %{_sysconfdir}/ld.so.conf.d/opengroupware.conf
-	elif [ ! "`grep '%{_libdir}' %{_sysconfdir}/ld.so.conf`" ]; then
-		echo "%{_libdir}" >> %{_sysconfdir}/ld.so.conf
-	fi
-	/sbin/ldconfig
 fi
+/sbin/ldconfig
 
 if [ "$1" = "2" ]; then
 	if [ -e %{_var}/log/opengroupware ]; then
@@ -622,29 +622,20 @@ if [ "$1" = "0" ]; then
 	if [ -h "%{_sysconfdir}/opengroupware.org" ]; then
 		rm %{_sysconfdir}/opengroupware.org
 	fi
-	if [ -e %{_sysconfdir}/ld.so.conf.d/opengroupware.conf ]; then
-		rm -f %{_sysconfdir}/ld.so.conf.d/opengroupware.conf
-	fi
-	/sbin/ldconfig
 fi
-
-%post docapi
 /sbin/ldconfig
 
-%post docapi-fs-project
-/sbin/ldconfig
+%post docapi -p /sbin/ldconfig
 
-%post docapi-db-project
-/sbin/ldconfig
+%post docapi-fs-project -p /sbin/ldconfig
 
-%post logic
-/sbin/ldconfig
+%post docapi-db-project -p /sbin/ldconfig
 
-%post webui-core
-/sbin/ldconfig
+%post logic -p /sbin/ldconfig
 
-%post webui-mailer
-/sbin/ldconfig
+%post webui-core -p /sbin/ldconfig
+
+%post webui-mailer -p /sbin/ldconfig
 
 %post tools
 if [ "$1" = "1" ]; then
@@ -725,14 +716,8 @@ if [ "$1" = "1" ]; then
 	chmod 754 %{_sysconfdir}/rc.d/init.d/"%{OGO_INIT_NAME}"
 	chkconfig --add "%{OGO_INIT_NAME}"
 	chkconfig "%{OGO_INIT_NAME}" on
-	##
-	if [ -d %{_sysconfdir}/ld.so.conf.d ]; then
-		echo "%{_libdir}" > %{_sysconfdir}/ld.so.conf.d/ogo.conf
-	elif [ ! "`grep '%{_libdir}' %{_sysconfdir}/ld.so.conf`" ]; then
-		echo "%{_libdir}" >> %{_sysconfdir}/ld.so.conf
-	fi
-	/sbin/ldconfig
 fi
+/sbin/ldconfig
 
 if [ "$1" = "2" ]; then
 	if [ ! -f "/etc/rc.d/init.d/%{OGO_INIT_NAME}" ]; then
@@ -886,12 +871,8 @@ if [ "$1" = "0" ]; then
 		chkconfig --del "%{OGO_INIT_NAME}"
 		rm -f "%{_sysconfdir}/rc.d/init.d/%{OGO_INIT_NAME}"
 	fi
-	##
-	if [ -e %{_sysconfdir}/ld.so.conf.d/ogo.conf ]; then
-		rm -f %{_sysconfdir}/ld.so.conf.d/ogo.conf
-	fi
-	/sbin/ldconfig
 fi
+/sbin/ldconfig
 
 %pre webui-app
 if [ "$1" = "2" ]; then
@@ -951,6 +932,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,ogo,skyrix,-)
+%verify(not md5 mtime size) /etc/ld.so.conf.d/opengroupware.conf
 %dir %attr(700,ogo,skyrix) %{_var}/lib/opengroupware.org/.libFoundation
 %dir %attr(700,ogo,skyrix) %{_var}/lib/opengroupware.org/.libFoundation/Defaults
 %dir %attr(700,ogo,skyrix) %{_var}/lib/opengroupware.org/documents
@@ -1116,6 +1098,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(-,root,root,-)
+%verify(not md5 mtime size) /etc/ld.so.conf.d/ogo.conf
 %{_bindir}/ogo-account-add
 %{_bindir}/ogo-account-del
 %{_bindir}/ogo-account-list
