@@ -932,7 +932,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,ogo,skyrix,-)
-%verify(not md5 mtime size) /etc/ld.so.conf.d/opengroupware.conf
+/etc/ld.so.conf.d/opengroupware.conf
 %dir %attr(700,ogo,skyrix) %{_var}/lib/opengroupware.org/.libFoundation
 %dir %attr(700,ogo,skyrix) %{_var}/lib/opengroupware.org/.libFoundation/Defaults
 %dir %attr(700,ogo,skyrix) %{_var}/lib/opengroupware.org/documents
@@ -1098,7 +1098,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(-,root,root,-)
-%verify(not md5 mtime size) /etc/ld.so.conf.d/ogo.conf
+/etc/ld.so.conf.d/ogo.conf
 %{_bindir}/ogo-account-add
 %{_bindir}/ogo-account-del
 %{_bindir}/ogo-account-list
