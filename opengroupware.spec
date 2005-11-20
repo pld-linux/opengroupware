@@ -52,7 +52,7 @@ BuildRequires:	sope-xml-devel
 BuildRequires:	gnustep-extensions-devel
 Requires:	glibc >= 6:2.3.5-7.6
 #Requires:	pilot-link
-Requires:	apache
+Requires:	apache >= 2.0.40
 #Requires:	glibc
 Requires:	openssl >= 0.9.7
 #Requires:	openldap
