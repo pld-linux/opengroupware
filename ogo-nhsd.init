@@ -36,7 +36,6 @@ RUN_COMMAND="export PGCLIENTENCODING=${PGCLIENTENCODING}; exec ${BIN} 2>>${LOGER
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
 	if [ ! -f /var/lock/subsys/network ]; then
-		# nls "ERROR: Networking is down. %s can't be run." ogo-nhsd
 		msg_network_down ogo-nhsd
 		exit 1
 	fi
@@ -50,25 +49,21 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/ogo-nhsd ]; then
-		# show "Starting %s service" ogo-nhsd
 		msg_starting ogo-nhsd
 		daemon --user ${USER} --fork ${RUN_COMMAND}
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/ogo-nhsd
 	else
-		# show "%s service is already running." ogo-nhsd
 		msg_already_running ogo-nhsd
 	fi
 	;;
   stop)
 	if [ -f /var/lock/subsys/ogo-nhsd ]; then
 		# Stop daemons.
-		# show "Stopping %s service" ogo-nhsd
 		msg_stopping ogo-nhsd
 		killproc ${PROG}
 		rm -f /var/lock/subsys/ogo-nhsd
 	else
-		# show "%s service is not running." ogo-nhsd
 		msg_not_running ogo-nhsd
 	fi
 	;;
@@ -79,12 +74,10 @@ case "$1" in
 	;;
   reload)
 	if [ -f /var/lock/subsys/ogo-nhsd ]; then
-		# show "Reload %s service" ogo-nhsd
 		msg_reloading ogo-nhsd
 		killproc ${PROG} -HUP
 		RETVAL=$?
 	else
-		# show "%s service is not running." ogo-nhsd
 		msg_not_running ogo-nhsd >&2
 		RETVAL=7
 	fi
@@ -103,7 +96,6 @@ case "$1" in
 	RETVAL=$?
 	;;
   *)
-	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
 	exit 3
 esac

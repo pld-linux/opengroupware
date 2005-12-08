@@ -36,7 +36,6 @@ RUN_COMMAND="export PGCLIENTENCODING=${PGCLIENTENCODING}; exec ${BIN} 2>>${LOGER
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
 	if [ ! -f /var/lock/subsys/network ]; then
-		# nls "ERROR: Networking is down. %s can't be run." ogo-xmlrpcd
 		msg_network_down ogo-xmlrpcd
 		exit 1
 	fi
@@ -50,25 +49,21 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/ogo-xmlrpcd ]; then
-		# show "Starting %s service" ogo-xmlrpcd
 		msg_starting ogo-xmlrpcd
 		daemon --user ${USER} --fork ${RUN_COMMAND}
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/ogo-xmlrpcd
 	else
-		# show "%s service is already running." ogo-xmlrpcd
 		msg_already_running ogo-xmlrpcd
 	fi
 	;;
   stop)
 	if [ -f /var/lock/subsys/ogo-xmlrpcd ]; then
 		# Stop daemons.
-		# show "Stopping %s service" ogo-xmlrpcd
 		msg_stopping ogo-xmlrpcd
 		killproc ${PROG}
 		rm -f /var/lock/subsys/ogo-xmlrpcd
 	else
-		# show "%s service is not running." ogo-xmlrpcd
 		msg_not_running ogo-xmlrpcd
 	fi
 	;;
@@ -79,12 +74,10 @@ case "$1" in
 	;;
   reload)
 	if [ -f /var/lock/subsys/ogo-xmlrpcd ]; then
-		# show "Reload %s service" ogo-xmlrpcd
 		msg_reloading ogo-xmlrpcd
 		killproc ${PROG} -HUP
 		RETVAL=$?
 	else
-		# show "%s service is not running." ogo-xmlrpcd
 		msg_not_running ogo-xmlrpcd >&2
 		RETVAL=7
 	fi
@@ -103,7 +96,6 @@ case "$1" in
 	RETVAL=$?
 	;;
   *)
-	# show "Usage: %s {start|stop|restart|reload|force-reload|status}"
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
 	exit 3
 esac
