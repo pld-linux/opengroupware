@@ -7,11 +7,11 @@
 # - scavange descriptions of subpackages
 # - change %files section to PLD-like
 # - make a trigger bout further installing (making database, initializing it etc..)
-%define		nightlybuild	r1276
+%define		nightlybuild	r1524
 %define		ogo_makeflags	-s
 %define		zid_ver		1.3
-%define		xmlrpcd_ver	1.0a
-%define		datatrunk	200509081703
+%define		xmlrpcd_ver	1.1
+%define		datatrunk	200601231502
 %define		libversion	5.3
 %define		zide_v		1.5
 
@@ -19,11 +19,11 @@ Summary:	OpenGroupware
 Summary(pl):	OpenGroupware
 Name:		opengroupware.org
 Version:	1.1
-Release:	0.5
+Release:	0.6
 License:	GPL
 Group:		Libraries
 Source0:	http://download.opengroupware.org/nightly/sources/trunk/%{name}-trunk-%{nightlybuild}-%{datatrunk}.tar.gz
-# Source0-md5:	828b30946e73081c8e9a415ee81a4c71
+# Source0-md5:	f4d97c9fc4f533b936202a3a05e24efa
 Source1:	ogo-webui.init
 Source2:	ogo-nhsd.init
 Source3:	ogo-xmlrpcd.init
@@ -1030,37 +1030,37 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libLSSearch*.so
 %{_libdir}/libOGoSchedulerTools*.so
 
-%files pda
-%defattr(-,root,root,-)
-%{_sbindir}/ogo-nhsd-%{version}
-%{_bindir}/ogo-ppls-%{version}
-%{_libdir}/libOGoNHS*.so.%{libversion}*
-%{_libdir}/libOGoPalmUI_d.so.%{libversion}*
-%{_libdir}/libOGoPalm_d.so.%{libversion}*
-%{_libdir}/libPPSync*.so.%{libversion}*
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/ix86/linux-gnu/gnu-fd-nil/OpenGroupwareNHS
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/Resources/Info-gnustep.plist
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/bundle-info.plist
-%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/stamp.make
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/ix86/linux-gnu/gnu-fd-nil/OGoPalmDS
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/Resources/Info-gnustep.plist
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/bundle-info.plist
-%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/stamp.make
-%{_libdir}/opengroupware.org-%{version}/webui/OGoPalm.lso
-%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/%{NHSD_SYSCONF}
-%ghost %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{NHSD_INIT_NAME}
+#%files pda
+#%defattr(-,root,root,-)
+#%{_sbindir}/ogo-nhsd-%{version}
+#%{_bindir}/ogo-ppls-%{version}
+#%{_libdir}/libOGoNHS*.so.%{libversion}*
+#%{_libdir}/libOGoPalmUI_d.so.%{libversion}*
+#%{_libdir}/libOGoPalm_d.so.%{libversion}*
+#%{_libdir}/libPPSync*.so.%{libversion}*
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/ix86/linux-gnu/gnu-fd-nil/OpenGroupwareNHS
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/Resources/Info-gnustep.plist
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/bundle-info.plist
+#%{_libdir}/opengroupware.org-%{version}/conduits/OpenGroupwareNHS.conduit/stamp.make
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/ix86/linux-gnu/gnu-fd-nil/OGoPalmDS
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/Resources/Info-gnustep.plist
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/bundle-info.plist
+#%{_libdir}/opengroupware.org-%{version}/datasources/OGoPalmDS.ds/stamp.make
+#%{_libdir}/opengroupware.org-%{version}/webui/OGoPalm.lso
+#%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init
+#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/%{NHSD_SYSCONF}
+#%ghost %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{NHSD_INIT_NAME}
 
-%files pda-devel
-%defattr(-,root,root,-)
-%{_includedir}/OGoNHS
-%{_includedir}/OGoPalm
-%{_includedir}/OGoPalmUI
-%{_includedir}/PPSync
-%{_libdir}/libOGoNHS*.so
-%{_libdir}/libOGoPalmUI_d.so
-%{_libdir}/libOGoPalm_d.so
-%{_libdir}/libPPSync*.so
+#%files pda-devel
+#%defattr(-,root,root,-)
+#%{_includedir}/OGoNHS
+#%{_includedir}/OGoPalm
+#%{_includedir}/OGoPalmUI
+#%{_includedir}/PPSync
+#%{_libdir}/libOGoNHS*.so
+#%{_libdir}/libOGoPalmUI_d.so
+#%{_libdir}/libOGoPalm_d.so
+#%{_libdir}/libPPSync*.so
 
 %files theme-default
 %defattr(-,root,root,-)
