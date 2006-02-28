@@ -1,0 +1,7 @@
+- builds
+- QCR (Qboosh Check Request)
+- changes inspired by included maintaince/opengroupware.spec
+- scavanged some install scripts
+- scavanged and tweaked whole %files section
+- added few subpackages according to scavanged %files section
+- changed vsersion to 1.1 r1259
