@@ -34,28 +34,28 @@ BuildRequires:	apache-devel >= 2.0.40
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glibc-devel
+BuildRequires:	gnustep-extensions-devel
 BuildRequires:	gnustep-make-libFoundation-devel
 #BuildRequires:  opengroupware.org-pilot-link-devel
+BuildRequires:	openldap-devel
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel >= 0.9.7
 #BuildRequires:	pilot-link-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	openldap-devel
+#BuildRequires:	sope-EOF-devel
 BuildRequires:	sope-appserver-devel
 BuildRequires:	sope-core-devel
-#BuildRequires:	sope-EOF-devel
 BuildRequires:	sope-gdl1-devel
 BuildRequires:	sope-ical-devel
 BuildRequires:	sope-ldap-devel
 BuildRequires:	sope-mime-devel
 BuildRequires:	sope-xml-devel
-BuildRequires:	gnustep-extensions-devel
-Requires:	glibc >= 6:2.3.5-7.6
-#Requires:	pilot-link
 Requires:	apache >= 2.0.40
 #Requires:	glibc
-Requires:	openssl >= 0.9.7
+Requires:	glibc >= 6:2.3.5-7.6
 #Requires:	openldap
+Requires:	openssl >= 0.9.7
+#Requires:	pilot-link
 # local???
 Requires:	postgresql
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -281,9 +281,9 @@ This package contains the development files for the mailer component
 of OpenGroupware.org's Web UI
 
 %package webui-news
-Summary:      News component of OpenGroupware.org's Web UI
-Group:        Development/Libraries
-#Requires:     sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
+Summary:	News component of OpenGroupware.org's Web UI
+Group:		Development/Libraries
+#Requires:	sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
 #AutoReqProv:  off
 
 %description webui-news
@@ -291,9 +291,9 @@ The news component shows recent appointments and tasks for each user.
 Additionally it supports the creation and display of simple news items.
 
 %package webui-task
-Summary:      Task component of OpenGroupware.org's Web UI
-Group:        Development/Libraries
-#Requires:     ogo-webui-app ogo-webui-core
+Summary:	Task component of OpenGroupware.org's Web UI
+Group:		Development/Libraries
+#Requires:	ogo-webui-app ogo-webui-core
 #AutoReqProv:  off
 
 %description webui-task
@@ -301,9 +301,9 @@ The task component enables users to assign and manage tasks
 related to projects or standalone.
 
 %package webui-project
-Summary:      Project component of OpenGroupware.org's Web UI
-Group:        Development/Libraries
-#Requires:     sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
+Summary:	Project component of OpenGroupware.org's Web UI
+Group:		Development/Libraries
+#Requires:	sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
 #AutoReqProv:  off
 
 %description webui-project
@@ -313,8 +313,8 @@ project's status, add documents and links and interworks nicely
 with the task component to assign specific tasks within a project.
 
 %package webui-resource-basque
-Summary:      Basque translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Basque translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -322,8 +322,8 @@ Group:        Development/Libraries
 This package contains the Basque translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-dk
-Summary:      Danish translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Danish translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -331,8 +331,8 @@ Group:        Development/Libraries
 This package contains the Danish translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-nl
-Summary:      Dutch translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Dutch translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -340,8 +340,8 @@ Group:        Development/Libraries
 This package contains the Dutch translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-en
-Summary:      English translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	English translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -349,8 +349,8 @@ Group:        Development/Libraries
 This package contains the English translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-fr
-Summary:      French translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	French translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -358,8 +358,8 @@ Group:        Development/Libraries
 This package contains the French translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-de
-Summary:      German translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	German translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -367,8 +367,8 @@ Group:        Development/Libraries
 This package contains the German translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-hu
-Summary:      Hungarian translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Hungarian translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -376,8 +376,8 @@ Group:        Development/Libraries
 This package contains the Hungarian translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-it
-Summary:      Italian translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Italian translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -385,8 +385,8 @@ Group:        Development/Libraries
 This package contains the Italian translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-jp
-Summary:      Japanese translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Japanese translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -394,8 +394,8 @@ Group:        Development/Libraries
 This package contains the Japanese translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-no
-Summary:      Norwegian translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Norwegian translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -403,8 +403,8 @@ Group:        Development/Libraries
 This package contains the Norwegian translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-pl
-Summary:      Polish translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Polish translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -412,8 +412,8 @@ Group:        Development/Libraries
 This package contains the Polish translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-pt
-Summary:      Portuguese translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Portuguese translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -421,8 +421,8 @@ Group:        Development/Libraries
 This package contains the Portuguese translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-es
-Summary:      Spanish translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Spanish translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -430,8 +430,8 @@ Group:        Development/Libraries
 This package contains the Spanish translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-sk
-Summary:      Slovak translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Slovak translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -439,8 +439,8 @@ Group:        Development/Libraries
 This package contains the Slovak translation for OpenGroupware.org's web UI.
 ##
 %package webui-resource-ptbr
-Summary:      Portuguese (Brazilian) translation for OpenGroupware.org's web UI
-Group:        Development/Libraries
+Summary:	Portuguese (Brazilian) translation for OpenGroupware.org's web UI
+Group:		Development/Libraries
 #Requires:     ogo-webui-app
 #AutoReqProv:  off
 
@@ -470,7 +470,7 @@ Requires:	%{name}-zidestore = %{version}-%{release}
 zidestore devel package.
 
 %prep
-%setup -q -n opengroupware.org
+%setup -q -n %{name}
 
 %build
 . %{_libdir}/GNUstep-libFoundation/System/Library/Makefiles/GNUstep.sh
@@ -818,7 +818,7 @@ if [ "$1" = "2" ]; then
 	else
 		%{__sed} "s^ZIDESTORE_INIT_VERSION^%{ZIDESTORE_INIT_VERSION}^g; \
 		s^ZIDESTORE_INIT_PREFIX^%{ZIDESTORE_INIT_PREFIX}^g; \
-		s^ZIDESTORE_SYSCONF^%{ZIDESTORE_SYSCONF}^g; \	
+		s^ZIDESTORE_SYSCONF^%{ZIDESTORE_SYSCONF}^g; \
 		s^GNUSTEP_DIR^%{GNUSTEP_DIR}^g" \
 		"%{_datadir}/zidestore-%{zide_v}/initscript_templates/ogo-zidestore.init" \
 		>%{_sysconfdir}/init.d/"%{ZIDESTORE_INIT_NAME}"
@@ -860,8 +860,8 @@ if [ "$1" = "2" ]; then
 		chkconfig "%{NHSD_OLD_INIT}" off
 		chkconfig --del "%{NHSD_OLD_INIT}"
 		rm -f "%{_sysconfdir}/rc.d/init.d/%{NHSD_OLD_INIT}"
-	fi 
-fi  
+	fi
+fi
 
 %preun webui-app
 if [ "$1" = "0" ]; then
@@ -881,8 +881,8 @@ if [ "$1" = "2" ]; then
 		chkconfig "%{WEBUI_OLD_INIT}" off
 		chkconfig --del "%{WEBUI_OLD_INIT}"
 		rm -f "%{_sysconfdir}/rc.d/init.d/%{WEBUI_OLD_INIT}"
-	fi 
-fi  
+	fi
+fi
 
 %preun xmlrpcd
 if [ "$1" = "0" ]; then
@@ -902,8 +902,8 @@ if [ "$1" = "2" ]; then
 		chkconfig "%{XMLRPCD_OLD_INIT}" off
 		chkconfig --del "%{XMLRPCD_OLD_INIT}"
 		rm -f "%{_sysconfdir}/rc.d/init.d/%{XMLRPCD_OLD_INIT}"
-	fi 
-fi  
+	fi
+fi
 
 %preun zidestore
 if [ "$1" = "0" ]; then
