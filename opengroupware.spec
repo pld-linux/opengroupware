@@ -36,7 +36,7 @@ BuildRequires:	automake
 BuildRequires:	glibc-devel
 BuildRequires:	gnustep-extensions-devel
 BuildRequires:	gnustep-make-libFoundation-devel
-#BuildRequires:  opengroupware.org-pilot-link-devel
+#BuildRequires:	opengroupware.org-pilot-link-devel
 BuildRequires:	openldap-devel
 BuildRequires:	openldap-devel
 BuildRequires:	openssl-devel >= 0.9.7
@@ -284,7 +284,7 @@ of OpenGroupware.org's Web UI
 Summary:	News component of OpenGroupware.org's Web UI
 Group:		Development/Libraries
 #Requires:	sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
-#AutoReqProv:  off
+#AutoReqProv:	off
 
 %description webui-news
 The news component shows recent appointments and tasks for each user.
@@ -294,7 +294,7 @@ Additionally it supports the creation and display of simple news items.
 Summary:	Task component of OpenGroupware.org's Web UI
 Group:		Development/Libraries
 #Requires:	ogo-webui-app ogo-webui-core
-#AutoReqProv:  off
+#AutoReqProv:	off
 
 %description webui-task
 The task component enables users to assign and manage tasks
@@ -304,7 +304,7 @@ related to projects or standalone.
 Summary:	Project component of OpenGroupware.org's Web UI
 Group:		Development/Libraries
 #Requires:	sope%{smaj}%{smin}-appserver sope%{smaj}%{smin}-core sope%{smaj}%{smin}-gdl1 sope%{smaj}%{smin}-ldap sope%{smaj}%{smin}-mime sope%{smaj}%{smin}-xml ogo-docapi ogo-logic ogo-webui-app ogo-webui-core libfoundation%{lfmaj}%{lfmin} libobjc-lf2
-#AutoReqProv:  off
+#AutoReqProv:	off
 
 %description webui-project
 The project component adds project management capabilities to
@@ -315,8 +315,8 @@ with the task component to assign specific tasks within a project.
 %package webui-resource-basque
 Summary:	Basque translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-basque
 This package contains the Basque translation for OpenGroupware.org's web UI.
@@ -324,8 +324,8 @@ This package contains the Basque translation for OpenGroupware.org's web UI.
 %package webui-resource-dk
 Summary:	Danish translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-dk
 This package contains the Danish translation for OpenGroupware.org's web UI.
@@ -333,8 +333,8 @@ This package contains the Danish translation for OpenGroupware.org's web UI.
 %package webui-resource-nl
 Summary:	Dutch translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-nl
 This package contains the Dutch translation for OpenGroupware.org's web UI.
@@ -342,8 +342,8 @@ This package contains the Dutch translation for OpenGroupware.org's web UI.
 %package webui-resource-en
 Summary:	English translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-en
 This package contains the English translation for OpenGroupware.org's web UI.
@@ -351,8 +351,8 @@ This package contains the English translation for OpenGroupware.org's web UI.
 %package webui-resource-fr
 Summary:	French translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-fr
 This package contains the French translation for OpenGroupware.org's web UI.
@@ -360,8 +360,8 @@ This package contains the French translation for OpenGroupware.org's web UI.
 %package webui-resource-de
 Summary:	German translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-de
 This package contains the German translation for OpenGroupware.org's web UI.
@@ -369,8 +369,8 @@ This package contains the German translation for OpenGroupware.org's web UI.
 %package webui-resource-hu
 Summary:	Hungarian translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-hu
 This package contains the Hungarian translation for OpenGroupware.org's web UI.
@@ -378,8 +378,8 @@ This package contains the Hungarian translation for OpenGroupware.org's web UI.
 %package webui-resource-it
 Summary:	Italian translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-it
 This package contains the Italian translation for OpenGroupware.org's web UI.
@@ -387,8 +387,8 @@ This package contains the Italian translation for OpenGroupware.org's web UI.
 %package webui-resource-jp
 Summary:	Japanese translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-jp
 This package contains the Japanese translation for OpenGroupware.org's web UI.
@@ -396,8 +396,8 @@ This package contains the Japanese translation for OpenGroupware.org's web UI.
 %package webui-resource-no
 Summary:	Norwegian translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-no
 This package contains the Norwegian translation for OpenGroupware.org's web UI.
@@ -405,8 +405,8 @@ This package contains the Norwegian translation for OpenGroupware.org's web UI.
 %package webui-resource-pl
 Summary:	Polish translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-pl
 This package contains the Polish translation for OpenGroupware.org's web UI.
@@ -414,8 +414,8 @@ This package contains the Polish translation for OpenGroupware.org's web UI.
 %package webui-resource-pt
 Summary:	Portuguese translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-pt
 This package contains the Portuguese translation for OpenGroupware.org's web UI.
@@ -423,8 +423,8 @@ This package contains the Portuguese translation for OpenGroupware.org's web UI.
 %package webui-resource-es
 Summary:	Spanish translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-es
 This package contains the Spanish translation for OpenGroupware.org's web UI.
@@ -432,8 +432,8 @@ This package contains the Spanish translation for OpenGroupware.org's web UI.
 %package webui-resource-sk
 Summary:	Slovak translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-sk
 This package contains the Slovak translation for OpenGroupware.org's web UI.
@@ -441,8 +441,8 @@ This package contains the Slovak translation for OpenGroupware.org's web UI.
 %package webui-resource-ptbr
 Summary:	Portuguese (Brazilian) translation for OpenGroupware.org's web UI
 Group:		Development/Libraries
-#Requires:     ogo-webui-app
-#AutoReqProv:  off
+#Requires:	ogo-webui-app
+#AutoReqProv:	off
 
 %description webui-resource-ptbr
 This package contains the Portuguese (Brazilian) translation for OpenGroupware.org's web UI.
@@ -544,26 +544,26 @@ APTNOTIFY_TMP_DIR="${SHAREDIR}/aptnotify_template"
 install %{SOURCE5} ${APTNOTIFY_TMP_DIR}/
 
 #create sysconfig
-echo "RUN_DBSCRIPT=\"YES\"            # will run the whole script - or not, as thou wish
-PATCH_POSTGRESQL_CONF=\"YES\"         # will backup and patch postgresql.conf - if needed
-PATCH_PGHBA_CONF=\"YES\"              # will backup and patch pg_hba.conf - if needed
-CREATE_DB_USER=\"YES\"                # will create a DB user for OpenGroupware.org
-CREATE_DB_ITSELF=\"YES\"              # will create the DB itself for OpenGroupware.org
-ROLLIN_SCHEME=\"YES\"                 # will roll'in the current base DB scheme of OGo
-FORCE_OVERRIDE_PRESENT_SCHEME=\"YES\" # might harm thy current scheme (or not?)
-UPDATE_SCHEMA=\"YES\"                 # will attempt to update the database scheme - if needed
-OGO_USER=\"ogo\"                      # default username (unix) of your OGo install - might vary
-PGCLIENTENCODING=\"LATIN1\"           # client encoding to use
-USE_SKYAPTNOTIFY=\"YES\"              # periodically runs aptnotify - or not
+echo "RUN_DBSCRIPT=\"YES\"		# will run the whole script - or not, as thou wish
+PATCH_POSTGRESQL_CONF=\"YES\"		# will backup and patch postgresql.conf - if needed
+PATCH_PGHBA_CONF=\"YES\"		# will backup and patch pg_hba.conf - if needed
+CREATE_DB_USER=\"YES\"			# will create a DB user for OpenGroupware.org
+CREATE_DB_ITSELF=\"YES\"		# will create the DB itself for OpenGroupware.org
+ROLLIN_SCHEME=\"YES\"			# will roll'in the current base DB scheme of OGo
+FORCE_OVERRIDE_PRESENT_SCHEME=\"YES\"	# might harm thy current scheme (or not?)
+UPDATE_SCHEMA=\"YES\"			# will attempt to update the database scheme - if needed
+OGO_USER=\"ogo\"			# default username (unix) of your OGo install - might vary
+PGCLIENTENCODING=\"LATIN1\"		# client encoding to use
+USE_SKYAPTNOTIFY=\"YES\"		# periodically runs aptnotify - or not
 " >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{OGO_SYSCONF}
 
-echo "PGCLIENTENCODING=\"LATIN1\"           # client encoding to use
+echo "PGCLIENTENCODING=\"LATIN1\"	# client encoding to use
 " >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{NHSD_SYSCONF}
 
-echo "PGCLIENTENCODING=\"LATIN1\"           # client encoding to use
+echo "PGCLIENTENCODING=\"LATIN1\"	# client encoding to use
 " >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{XMLRPCD_SYSCONF}
 
-echo "PGCLIENTENCODING=\"LATIN1\"           # client encoding to use
+echo "PGCLIENTENCODING=\"LATIN1\"	# client encoding to use
 " >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{ZIDESTORE_SYSCONF}
 
 install -d $RPM_BUILD_ROOT/etc/ld.so.conf.d
@@ -679,7 +679,7 @@ fi
 if [ "$1" = "2" ]; then
 	if [ ! -f "/etc/rc.d/init.d/%{NHSD_INIT_NAME}" ]; then
 		%{__sed} "s^NHSD_INIT_VERSION^%{NHSD_INIT_VERSION}^g; \
-   		s^NHSD_INIT_PREFIX^%{NHSD_INIT_PREFIX}^g; \
+			s^NHSD_INIT_PREFIX^%{NHSD_INIT_PREFIX}^g; \
 			s^NHSD_SYSCONF^%{NHSD_SYSCONF}^g; \
 			s^GNUSTEP_DIR^%{GNUSTEP_DIR}^g" \
 			"%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init" \
@@ -839,7 +839,7 @@ if [ "$1" = "0" ]; then
 	fi
 	if [ -f "%{_bindir}/ogo-aptnotify.sh" ]; then
 		rm -f "%{_bindir}/ogo-aptnotify.sh"
-  fi
+	fi
 fi
 
 %preun pda
@@ -924,7 +924,7 @@ if [ "$1" = "2" ]; then
 		chkconfig --del "%{ZIDESTORE_OLD_INIT}"
 		rm -f "%{_sysconfdir}/rc.d/init.d/%{ZIDESTORE_OLD_INIT}"
 	fi 
-fi  
+fi
 
 
 %clean
