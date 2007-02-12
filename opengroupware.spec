@@ -16,7 +16,7 @@
 %define		zide_v		1.5
 
 Summary:	OpenGroupware
-Summary(pl):	OpenGroupware
+Summary(pl.UTF-8):   OpenGroupware
 Name:		opengroupware.org
 Version:	1.1
 Release:	0.6
@@ -98,7 +98,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 OGo.
 
-%description -l pl
+%description -l pl.UTF-8
 OGo.
 
 %package docapi
