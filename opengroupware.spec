@@ -16,7 +16,7 @@
 %define		zide_v		1.5
 
 Summary:	OpenGroupware
-Summary(pl.UTF-8):   OpenGroupware
+Summary(pl.UTF-8):	OpenGroupware
 Name:		opengroupware.org
 Version:	1.1
 Release:	0.6
