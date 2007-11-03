@@ -37,8 +37,7 @@ BuildRequires:	glibc-devel
 BuildRequires:	gnustep-extensions-devel
 BuildRequires:	gnustep-make-libFoundation-devel
 #BuildRequires:	opengroupware.org-pilot-link-devel
-BuildRequires:	openldap-devel
-BuildRequires:	openldap-devel
+BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	openssl-devel >= 0.9.7
 #BuildRequires:	pilot-link-devel
 BuildRequires:	postgresql-devel
