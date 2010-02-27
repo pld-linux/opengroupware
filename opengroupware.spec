@@ -1048,7 +1048,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_libdir}/opengroupware.org-%{version}/webui/OGoPalm.lso
 #%{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-nhsd.init
 #%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/%{NHSD_SYSCONF}
-#%ghost %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{NHSD_INIT_NAME}
+#%attr(0755,root,root) %ghost %config %{_sysconfdir}/rc.d/init.d/%{NHSD_INIT_NAME}
 
 #%files pda-devel
 #%defattr(-,root,root,-)
@@ -1124,7 +1124,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/opengroupware.org-%{version}/templates/ogo-webui-%{version}
 %{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-webui.init
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/%{OGO_SYSCONF}
-%ghost %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{OGO_INIT_NAME}
+%attr(0755,root,root) %ghost %config %{_sysconfdir}/rc.d/init.d/%{OGO_INIT_NAME}
 
 %files webui-core
 %defattr(-,root,root,-)
@@ -1287,7 +1287,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/ogo-xmlrpcd-%{version}
 %{_datadir}/opengroupware.org-%{version}/initscript_templates/ogo-xmlrpcd.init
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/%{XMLRPCD_SYSCONF}
-%ghost %attr(0755,root,root) %{_sysconfdir}/rc.d/init.d/%{XMLRPCD_INIT_NAME}
+%attr(0755,root,root) %ghost %{_sysconfdir}/rc.d/init.d/%{XMLRPCD_INIT_NAME}
 
 %files zidestore
 %defattr(-,root,root,-)
@@ -1301,7 +1301,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/zidestore-%{zide_v}
 %{_datadir}/zidestore-%{zide_v}
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/%{ZIDESTORE_SYSCONF}
-%ghost %attr(0755,root,root) %{_sysconfdir}/rc.d/init.d/%{ZIDESTORE_INIT_NAME}
+%attr(0755,root,root) %ghost %{_sysconfdir}/rc.d/init.d/%{ZIDESTORE_INIT_NAME}
 
 %files zidestore-devel
 %defattr(-,root,root,-)
